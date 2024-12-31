@@ -210,6 +210,18 @@ body {
                 height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
                  font-size: 16px;
             }
+    #splash-screen {
+                padding: 10px; /* تقليل الحشو على الشاشات الصغيرة */
+            }
+
+            #splash-screen p {
+                font-size: 1.2em; /* تصغير حجم النص في الشاشات الصغيرة */
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -226,15 +238,20 @@ body {
   }
 
   h1, h2, h3 {
-    font-size: 1.2em; /* تعديل حجم العناوين */
+    font-size: 1em; /* تعديل حجم العناوين */
   }
 
   button {
-    font-size: 0.9em; /* تصغير الأزرار */
+    font-size: 0.8em; /* تصغير الأزرار */
   }
-  p {
-     font-size: 0.9em; /* تصغير الأزرار */ 
-  }          
+  #splash-screen p {
+                font-size: 1em; /* تصغير حجم النص أكثر */
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }     
         }
     
 
