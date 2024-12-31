@@ -208,6 +208,7 @@ body {
         align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
         height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
         padding: 20px;
+        position: relative; /* لجعل الزر يتحرك بالنسبة لهذه الحاوية */
     }
 
     /* تعديل مظهر البراجراف */
@@ -218,30 +219,15 @@ body {
         margin-bottom: 20px; /* إضافة مسافة بين البراجراف والزر */
         overflow: visible; /* التأكد من أن النص يظهر بالكامل */
     }
-
-    /* الزر أسفل البراجراف */
-    #splash-screen button {
-        width: 100%; /* جعل الزر يأخذ العرض الكامل */
-        padding: 12px 20px;
-        font-size: 18px;
-        background-color: #0066cc; /* لون الخلفية */
-        color: white; /* لون النص */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 20px; /* مسافة بين الزر والبراجراف */
+    #B_P {
+        flex-direction: column;
     }
 
-    /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
-    #splash-screen button:hover {
-        background-color: #004d99; /* تغيير اللون عند التمرير */
-    }
+ 
 
-    /* التأكد من إخفاء أي أجزاء غير ضرورية في الخريطة أو المحتويات الأخرى */
-    #map-container, #side-container {
-        display: none; /* إخفاء الخريطة أو أي محتوى آخر لتوفير المساحة */
-    }
+    
 }
+
 
     </style>
 </head>
