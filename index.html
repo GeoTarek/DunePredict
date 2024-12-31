@@ -199,7 +199,7 @@ body {
 #splash-screen button:hover {
     background: #b8870b;
 }
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
     /* حاوية شاشة الترحيب */
     #splash-screen {
         display: flex;
@@ -208,7 +208,6 @@ body {
         align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
         height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
         padding: 20px;
-        position: relative; /* لجعل الزر يتحرك بالنسبة لهذه الحاوية */
     }
 
     /* تعديل مظهر البراجراف */
@@ -220,11 +219,9 @@ body {
         overflow: visible; /* التأكد من أن النص يظهر بالكامل */
     }
 
-    /* وضع الزر في الجهة اليسرى */
+    /* الزر أسفل البراجراف */
     #splash-screen button {
-        position: absolute;
-        left: 20px; /* محاذاة الزر لليسار */
-        bottom: 20px; /* تحديد المسافة من الأسفل */
+        width: 100%; /* جعل الزر يأخذ العرض الكامل */
         padding: 12px 20px;
         font-size: 18px;
         background-color: #0066cc; /* لون الخلفية */
@@ -232,7 +229,7 @@ body {
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transform: translateX(0); /* التأكد من عدم خروج الزر خارج الشاشة */
+        margin-top: 20px; /* مسافة بين الزر والبراجراف */
     }
 
     /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
@@ -245,7 +242,6 @@ body {
         display: none; /* إخفاء الخريطة أو أي محتوى آخر لتوفير المساحة */
     }
 }
-
 
     </style>
 </head>
