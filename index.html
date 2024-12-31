@@ -200,11 +200,16 @@ body {
     background: #b8870b;
 }
 
-@media (max-width: 768px) {
-    #map-container,#side-container {
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
-            }
-        }
+@media screen and (max-width: 480px) {
+    #container {
+        flex-direction: column;
+        font-size: 0.9em;
+    }
+    #map-container, #side-container {
+        width: 100%;
+        height: 50vh;
+    }
+}
     
 
     </style>
