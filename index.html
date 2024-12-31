@@ -200,50 +200,40 @@ body {
     background: #b8870b;
 }
      @media (max-width: 768px) {
-    /* حاوية شاشة الترحيب */
     #splash-screen {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* ترتيب المحتوى من الأعلى */
-        align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
-        height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
+        align-items: flex-start;
         padding: 20px;
     }
-
-    /* تعديل مظهر البراجراف */
-    #B_P p {
-        font-size: 14px; /* تكبير الخط قليلاً */
-        line-height: 1.6; /* تحسين تباعد الأسطر */
-        width: 70%; /* تأكيد أن النص يأخذ العرض الكامل */
-        margin-bottom: 10px; /* إضافة مسافة بين البراجراف والزر */
-        overflow: visible; /* التأكد من أن النص يظهر بالكامل */
+    #B_P {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
     }
-
-    /* وضع الزر في الجهة اليسرى */
-    #splash-screen button {
-        position: absolute;
-        left: 20px; /* محاذاة الزر لليسار */
-        bottom: 20px; /* تحديد المسافة من الأسفل */
+    #B_P p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-right: 20px; /* Adds spacing between paragraph and button */
+    }
+    #B_P button {
+        align-self: flex-start;
         padding: 12px 20px;
         font-size: 18px;
-        background-color: #0066cc; /* لون الخلفية */
-        color: white; /* لون النص */
+        background-color: #0066cc;
+        color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
-
-    /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
-    #splash-screen button:hover {
-        background-color: #004d99; /* تغيير اللون عند التمرير */
+    #B_P button:hover {
+        background-color: #004d99;
     }
-
-    /* التأكد من إخفاء أي أجزاء غير ضرورية في الخريطة أو المحتويات الأخرى */
     #map-container, #side-container {
-        display: none; /* إخفاء الخريطة أو أي محتوى آخر لتوفير المساحة */
+        display: none;
     }
 }
-
 
     </style>
 </head>
