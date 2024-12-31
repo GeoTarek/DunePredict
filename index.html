@@ -220,41 +220,66 @@ body {
         padding: 10px; /* زيادة المسافة الداخلية */
     }
     
-    #B_P {
-        height: 250px; /* ارتفاع الحاوية */
-    }
+   #splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 8px 20px 60px;
+    width: 100%;
+            height: 100vh; /* يجعل ارتفاع div بطول الشاشة */
+            background-image: url('bac.jpg'); /* رابط الصورة */
+            background-size: cover; /* لضمان تغطية الصورة بالكامل */
+            background-repeat: no-repeat; /* منع تكرار الصورة */
+            background-position: center; /* تمركز الصورة في الوسط */
+}
+#splash-screen h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+        #B_P {
+    position: absolute;
+    bottom: 15px; /* ترك مسافة بين الحاوية وأسفل الشاشة */
+    width: 100%; /* عرض الحاوية */
+    height: 300px; /* ارتفاع الحاوية */
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+#B_P p {
+    font-size: 1.2em;
+    color: #fff;
+    width: 40%;
+    margin-bottom: 8px;
+    text-align: right;
+    line-height: 30px;
+}
+
+#splash-screen button {
+    position: absolute;
+    bottom: 5px; /* وضع الزر في أسفل الشاشة */
+    margin-right: 30%;
+    transform: translateX(-30%); /* تحريك الزر إلى منتصف الشاشة */
+    background: #444;
+    color: #fff;
+    border: 2px solid #b8870b;
+    padding: 10px 40px;
+    font-size: 24px;
+    border-radius: 60px 150px;
+    cursor: pointer;
+
     
-    #B_P p {
-        margin-bottom: 20px;
-        position: relative;
-        bottom: 20px; /* رفع البرجراف قليلاً للأعلى */
-        width: 70%;
-        text-align: left; /* محاذاة النص لليسار */
-    }
+}
 
-    /* تحريك الزر إلى يسار البرجراف */
-    #splash-screen {
-        background-size: cover; /* اجعل الصورة تغطي الحاوية بالكامل */
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh; /* تأكد من أن الصورة تغطي الارتفاع بالكامل */
-        display: flex;
-        justify-content: center; /* محاذاة العناصر في المنتصف أفقيًا */
-         /* محاذاة العناصر في المنتصف عموديًا */
-    }
-
-    /* زر داخل الصورة */
-    #splash-screen button {
-        position: absolute; /* وضع الزر بشكل مطلق */
-        bottom: 20px; /* رفع الزر لأعلى قليلاً */
-        left: 5px; /* وضع الزر على يسار البرجراف */
-        margin-right: 30px;
-        margin-left: 8px;
-        padding: 10px 20px; /* إضافة padding لتحسين الشكل */
-        background-color: #fff; /* تحسين لون الزر */
-        border: none;
-        cursor: pointer;
-    }
 
     /* تحسين المحاذاة في جانب الصورة */
     #side-container label {
