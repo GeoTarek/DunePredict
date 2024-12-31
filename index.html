@@ -206,6 +206,7 @@ body {
       @media screen and (max-width: 768px) {
             #container {
                 flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+                font-size: 1.2em;
             }
             #map-container, #side-container {
                 width: 100%;
@@ -216,6 +217,20 @@ body {
         @media screen and (max-width: 480px) {
             #map-container, #side-container {
                 height: 70vh; /* تعديل الارتفاع في الشاشات الصغيرة جدًا */
+            }
+        }
+        @media screen and (max-width: 768px) {
+            #splash-screen {
+                padding: 10px; /* تقليل الحشو على الشاشات الصغيرة */
+            }
+
+            #splash-screen p {
+                font-size: 1.2em; /* تصغير حجم النص في الشاشات الصغيرة */
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 16px;
             }
         }
     
