@@ -203,45 +203,39 @@ body {
 }
 
 
-      @media screen and (max-width: 768px) {
-            #container {
-                flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
-                
-            }
-            #map-container, #side-container {
-                width: 100%;
-                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
-                
-            }
-        }
+    @media (max-width: 768px) {
+  body {
+    font-size: 14px; /* تصغير النص للشاشات الصغيرة */
+  }
 
-        @media screen and (max-width: 480px) {
-            #map-container, #side-container {
-                 font-size: 1em;
-                height: 70vh; /* تعديل الارتفاع في الشاشات الصغيرة جدًا */
-            }
-        }
-        @media screen and (max-width: 768px) {
-            #splash-screen {
-                padding: 10px; /* تقليل الحشو على الشاشات الصغيرة */
-            }
-                 #B_P {
-  
-    height: 250px; /* ارتفاع الحاوية */
- 
+  .container {
+    padding: 5px; /* تقليل الحشو */
+  }
+
+  img {
+    width: 100%; /* جعل الصور تتناسب مع عرض الشاشة */
+    height: auto; /* الحفاظ على النسبة */
+  }
 }
 
-            #splash-screen p {
-                font-size: 1em; /* تصغير حجم النص في الشاشات الصغيرة */
-                width: 50%;
-            }
+/* الأنماط لشاشات أصغر مثل الموبايلات الصغيرة */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px; /* تقليل حجم النص أكثر */
+  }
 
-            button {
-                padding: 12px 25px;
-                font-size: 16px;
-            }
-        }
-    
+  .container {
+    padding: 2px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em; /* تعديل حجم العناوين */
+  }
+
+  button {
+    font-size: 0.9em; /* تصغير الأزرار */
+  }
+}
 
     </style>
 </head>
