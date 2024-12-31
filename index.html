@@ -2,7 +2,6 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-     <meta thhp-equiv="X-UA-Comatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تنبؤ بحركة الكثبان الرملية</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -199,60 +198,13 @@ body {
 #splash-screen button:hover {
     background: #b8870b;
 }
- @media (max-width: 768px) {
-    /* الحاوية الرئيسية */
-    #splash-screen {
-        display: flex;
-        justify-content: center; /* توسيط العناصر أفقياً */
-        align-items: center; /* توسيط العناصر عمودياً */
-        height: 100vh; /* استخدام كامل ارتفاع الشاشة */
-        padding: 15px; /* تباعد داخلي */
-        box-sizing: border-box; /* حساب التباعد ضمن الأبعاد */
-        background-color: #f9f9f9; /* لون خلفية ناعم */
-    }
 
-    /* الحاوية الداخلية */
-    #B_P {
-        text-align: center; /* توسيط المحتوى داخل الحاوية */
-        width: 100%; /* استخدام كامل عرض الشاشة */
-        max-width: 600px; /* أقصى عرض للحاوية */
-    }
-
-    /* النص */
-    #B_P p {
-        font-size: 16px; /* حجم خط مناسب */
-        line-height: 1.6; /* تباعد الأسطر */
-        color: #333; /* لون النص */
-        margin-bottom: 20px; /* مسافة أسفل النص */
-        word-wrap: break-word; /* منع تجاوز النص العرض */
-    }
-
-    /* الزر */
-    #start-button {
-        display: block; /* الزر يأخذ صفاً خاصاً به */
-        margin: 0 auto; /* توسيط الزر أفقياً */
-        padding: 12px 20px; /* تباعد داخلي */
-        font-size: 16px; /* حجم النص داخل الزر */
-        background-color: #007bff; /* لون الزر */
-        color: #fff; /* لون النص */
-        border: none; /* إزالة الحدود */
-        border-radius: 5px; /* زوايا مستديرة */
-        cursor: pointer;
-        width: 90%; /* عرض الزر نسبة من الشاشة */
-        max-width: 300px; /* أقصى عرض للزر */
-    }
-
-    /* التأثير عند التمرير */
-    #start-button:hover {
-        background-color: #0056b3; /* تغيير لون الخلفية عند التمرير */
-    }
-}
-
-
- 
-
+@media (max-width: 768px) {
+    #map-container,#side-container {
+                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
+            }
+        }
     
-
 
     </style>
 </head>
@@ -265,7 +217,7 @@ body {
         يهدف إلى تقديم حلول للتخفيف من مشكلة زحف الكثبان الرملية وتأثيرها على الطرق والمناطق العمرانية.<br>
         نصيحة: استخدم هذا النظام لتحليل المناطق الأكثر عرضة للخطر واتخاذ القرارات المناسبة.
     </p>
-    <button id="start-button" type="button" onclick="startApp()">البدء</button> </div>
+    <button type="button" onclick="startApp()">البدء</button> </div>
 </div>
     
     <!-- الحاوية الرئيسية -->
