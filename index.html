@@ -199,47 +199,52 @@ body {
 #splash-screen button:hover {
     background: #b8870b;
 }
-  @media (max-width: 768px) {
-    /* حاوية شاشة الترحيب */
+ @media (max-width: 768px) {
+    /* حاوية الشاشة */
     #splash-screen {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* ترتيب المحتوى من الأعلى */
-        align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
-        height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
-        padding: 20px;
+        flex-direction: column; /* ترتيب العناصر عمودياً */
+        justify-content: flex-start; /* محاذاة العناصر في الأعلى */
+        align-items: center; /* توسيط العناصر أفقياً */
+        height: 100vh; /* استخدام كامل ارتفاع الشاشة */
+        padding: 15px; /* إضافة تباعد داخلي */
+        box-sizing: border-box; /* ضمان حساب الحواف ضمن العرض والارتفاع */
+        background-color: #f9f9f9; /* لون خلفية ناعم */
     }
 
-    /* تعديل مظهر البراجراف */
+    /* نص البراجراف */
     #B_P p {
-        font-size: 16px; /* تكبير الخط قليلاً */
+        font-size: 16px; /* حجم خط مناسب للشاشات الصغيرة */
         line-height: 1.6; /* تحسين تباعد الأسطر */
-        width: 100%; /* تأكيد أن النص يأخذ العرض الكامل */
-        margin-bottom: 20px; /* إضافة مسافة بين البراجراف والزر */
-        overflow: visible; /* التأكد من أن النص يظهر بالكامل */
+        text-align: center; /* توسيط النص */
+        color: #333; /* لون نص واضح */
+        margin-bottom: 20px; /* مسافة بين النص والعناصر الأخرى */
+        word-wrap: break-word; /* منع تجاوز النص العرض */
     }
 
-    /* الزر أسفل البراجراف */
+    /* الزر */
     #splash-screen button {
-        width: 100%; /* جعل الزر يأخذ العرض الكامل */
-        padding: 12px 20px;
-        font-size: 18px;
-        background-color: #0066cc; /* لون الخلفية */
-        color: white; /* لون النص */
+        width: 90%; /* الزر يأخذ 90% من عرض الشاشة */
+        max-width: 300px; /* تحديد الحد الأقصى للعرض */
+        padding: 12px 20px; /* تباعد داخلي للزر */
+        font-size: 16px; /* حجم خط مناسب */
+        background-color: #007bff; /* لون الزر */
+        color: #fff; /* لون النص */
         border: none;
-        border-radius: 5px;
+        border-radius: 5px; /* زوايا مستديرة */
         cursor: pointer;
         margin-top: 20px; /* مسافة بين الزر والبراجراف */
+        text-align: center; /* توسيط النص داخل الزر */
     }
 
-    /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
+    /* التأثير عند التمرير فوق الزر */
     #splash-screen button:hover {
-        background-color: #004d99; /* تغيير اللون عند التمرير */
+        background-color: #0056b3; /* لون أغمق عند التمرير */
     }
 
-    /* التأكد من إخفاء أي أجزاء غير ضرورية في الخريطة أو المحتويات الأخرى */
+    /* إخفاء أي عناصر إضافية مثل الخريطة */
     #map-container, #side-container {
-        display: none; /* إخفاء الخريطة أو أي محتوى آخر لتوفير المساحة */
+        display: none;
     }
 }
 
