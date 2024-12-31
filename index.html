@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , user-scalable=no">
     <title>تنبؤ بحركة الكثبان الرملية</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
@@ -211,11 +211,13 @@ body {
             #map-container, #side-container {
                 width: 100%;
                 height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
+                
             }
         }
 
         @media screen and (max-width: 480px) {
             #map-container, #side-container {
+                 font-size: 1em;
                 height: 70vh; /* تعديل الارتفاع في الشاشات الصغيرة جدًا */
             }
         }
