@@ -199,78 +199,51 @@ body {
 #splash-screen button:hover {
     background: #b8870b;
 }
-      @media (max-width: 768px) {
-    /* عرض الحاويات بشكل عمودي */
-    #container {
-        flex-direction: column;
-        align-items: center; /* محاذاة العناصر في المنتصف */
-    }
-    
-    /* تعديل حجم الخريطة والحاوية الجانبية */
-    #map-container, #side-container {
-        display: block;
-        width: 100%;
-        height: 50vh; /* تقليل الارتفاع إلى 50% من ارتفاع الشاشة */
-    }
-
-    /* تعديل حجم العنوان */
-    #title {
-        font-size: 14px; /* تكبير الخط قليلاً */
-        text-align: center;
-    }
-
-    /* تحسين مظهر النصوص في #pr */
-    #pr {
-        font-size: 14px;
-        padding: 10px; /* زيادة المسافة الداخلية */
-    }
-
-    /* تحسين تنسيق الأزرار */
-    #splash-screen button, #side-container button {
-        width: 80%; /* زيادة العرض */
-        margin: 10px 0;
-        padding: 12px 20px;
-        font-size: 18px; /* تكبير حجم الخط */
-    }
-
-    /* إعادة ضبط تنسيق جدول النتائج */
-    #result-table th, #result-table td {
-        font-size: 12px;
-        padding: 6px;
-    }
-
-    /* تحسين مظهر محتويات شاشة الترحيب */
-    #B_P p {
-        width: 100%;
-        font-size: 1em;
-        line-height: 1.6;
-    }
-
-    /* تعديل صورة خلفية شاشة الترحيب */
+     @media (max-width: 768px) {
+    /* حاوية شاشة الترحيب */
     #splash-screen {
-        background-size: cover;
-        background-position: center center;
-        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* ترتيب المحتوى من الأعلى */
+        align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
+        height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
+        padding: 20px;
     }
 
-    #B_P {
-        width: 100%;
-        height: auto;
-        margin-bottom: 20px;
+    /* تعديل مظهر البراجراف */
+    #B_P p {
+        font-size: 16px; /* تكبير الخط قليلاً */
+        line-height: 1.6; /* تحسين تباعد الأسطر */
+        width: 100%; /* تأكيد أن النص يأخذ العرض الكامل */
+        margin-bottom: 20px; /* إضافة مسافة بين البراجراف والزر */
+        overflow: visible; /* التأكد من أن النص يظهر بالكامل */
     }
 
+    /* وضع الزر في الجهة اليسرى */
     #splash-screen button {
         position: absolute;
-        bottom: 10px;
-        margin-right: 40%;
-        transform: translateX(-20%);
+        left: 20px; /* محاذاة الزر لليسار */
+        bottom: 20px; /* تحديد المسافة من الأسفل */
+        padding: 12px 20px;
+        font-size: 18px;
+        background-color: #0066cc; /* لون الخلفية */
+        color: white; /* لون النص */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
+    #splash-screen button:hover {
+        background-color: #004d99; /* تغيير اللون عند التمرير */
+    }
+
+    /* التأكد من إخفاء أي أجزاء غير ضرورية في الخريطة أو المحتويات الأخرى */
+    #map-container, #side-container {
+        display: none; /* إخفاء الخريطة أو أي محتوى آخر لتوفير المساحة */
     }
 }
 
-
-
-
-      
 
     </style>
 </head>
