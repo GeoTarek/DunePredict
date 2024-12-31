@@ -202,18 +202,10 @@ body {
     background: #b8870b;
 }
 
- @media screen and (max-width: 768px) {
-            #container {
-                flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
-            }
-            #map-container, #side-container {
-                width: 100%;
-                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
-            }
-        }
 
-        @media screen and (max-width: 480px) {
+        @media only screen (min-width: 220px) and (max-width: 600px) {
             #map-container, #side-container {
+                dispaly: block;
                 height: 70vh; /* تعديل الارتفاع في الشاشات الصغيرة جدًا */
             }
         }
