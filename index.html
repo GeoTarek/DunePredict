@@ -200,23 +200,34 @@ body {
     background: #b8870b;
 }
         @media (max-width: 768px) {
-        #container {
-            flex-direction: column;
-        } 
-            #map-container, #side-container {
-                display:block;
-                width: 100%;
-                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
-            } 
-            #title {
-                font-size: 10px;
-            }
-            #pr{
-                 font-size: 14px;
-            }
-    
-    
-        }
+    #container {
+        flex-direction: column;
+    }
+    #map-container, #side-container {
+        display: block;
+        width: 100%;
+        height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
+    }
+    #title {
+        font-size: 14px; /* تكبير الخط قليلاً */
+    }
+    #pr {
+        font-size: 14px; /* ضبط حجم الخط لتحسين العرض */
+        padding: 10px; /* زيادة المسافة الداخلية */
+    }
+    #B_P p {
+        font-size: 1.1em; /* تحسين قراءة النص */
+        line-height: 1.8; /* زيادة المسافة بين الأسطر */
+    }
+    #splash-screen button {
+        bottom: 20px; /* تحريك الزر لأعلى قليلاً */
+    }
+    #side-container label {
+        padding: 5px; /* تحسين المسافة الداخلية للعنصر */
+        line-height: 1.5; /* زيادة المسافة بين السطور */
+    }
+}
+
 
 
       
