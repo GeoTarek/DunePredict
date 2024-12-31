@@ -10,11 +10,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    height: 100vh;
+
 }
 body {
     font-family: Arial, sans-serif;
     direction: rtl;
+    overflow: hidden;
+     height: 100vh
 }
 
 #container {
@@ -200,9 +202,10 @@ body {
     background: #b8870b;
 }
 
-@media (max-width:  480px) {
-    #map-container,#side-container {
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
+ @media (max-width: 480px) {
+            #map-container, #side-container {
+                width: 100%;
+                height: 100%; /* تأكيد ملائمة الحاويات على الشاشات الصغيرة */
             }
         }
         .body {
