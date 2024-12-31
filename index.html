@@ -200,16 +200,21 @@ body {
     background: #b8870b;
 }
 
-@media screen and (max-width: 480px) {
-    #container {
-        flex-direction: column;
-        font-size: 0.9em;
-    }
-    #map-container, #side-container {
-        width: 100%;
-        height: 50vh;
-    }
-}
+@media screen and (max-width: 768px) {
+            #container {
+                flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+            }
+            #map-container, #side-container {
+                width: 100%;
+                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #map-container, #side-container {
+                height: 70vh; /* تعديل الارتفاع في الشاشات الصغيرة جدًا */
+            }
+        }
     
 
     </style>
