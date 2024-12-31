@@ -208,6 +208,7 @@ body {
         align-items: flex-start; /* محاذاة العناصر من الجهة اليسرى */
         height: 100vh; /* تأكيد أن الحاوية تأخذ كامل الارتفاع */
         padding: 20px;
+        position: relative; /* لجعل الزر يتحرك بالنسبة لهذه الحاوية */
     }
 
     /* تعديل مظهر البراجراف */
@@ -224,13 +225,14 @@ body {
         position: absolute;
         left: 20px; /* محاذاة الزر لليسار */
         bottom: 20px; /* تحديد المسافة من الأسفل */
-        padding: 10px 15px;
+        padding: 12px 20px;
         font-size: 18px;
         background-color: #0066cc; /* لون الخلفية */
         color: white; /* لون النص */
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        transform: translateX(0); /* التأكد من عدم خروج الزر خارج الشاشة */
     }
 
     /* إضافة تنسيق إضافي لتحسين مظهر الزر عند التمرير عليه */
