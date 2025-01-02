@@ -260,14 +260,15 @@ window.addEventListener('load', adjustLayout);
 function adjustLayout() {
     const container = document.getElementById('container');
     const mapContainer = document.getElementById('map-container');
-    const sideContainer = document.getElementById('side-container');
-
-    if (window.innerWidth <= 768) {
+    const sideContainer = document.getElementById('side-container');  
+   
+    if (window.innerWidth <= 460) {
         container.style.flexDirection = 'column';
         mapContainer.style.width = '100%';
         mapContainer.style.height = '50vh';
         sideContainer.style.width = '100%';
         sideContainer.style.height = '50vh';
+
     } else {
         container.style.flexDirection = 'row';
         mapContainer.style.width = '70%';
@@ -276,6 +277,30 @@ function adjustLayout() {
         sideContainer.style.height = '100vh';
     }
 }
+
+        window.addEventListener('resize', adjustSplashScreen);
+window.addEventListener('load', adjustSplashScreen);
+
+function adjustSplashScreen() {
+  const splashScreen = document.getElementById('splash-screen');
+  const h1 = splashScreen.querySelector('h1');
+  const p = splashScreen.querySelector('p');
+  const button = splashScreen.querySelector('#start-button');
+
+  // ضبط النصوص والحجم بشكل متناسب
+  if (window.innerWidth <= 768) {
+    h1.style.fontSize = '6vw';
+    p.style.fontSize = '4vw';
+    button.style.fontSize = '3vw';
+    button.style.padding = '15px 30px';
+  } else {
+    h1.style.fontSize = '4vw';
+    p.style.fontSize = '2.5vw';
+    button.style.fontSize = '2vw';
+    button.style.padding = '10px 20px';
+  }
+}
+
 
         
         function startApp() {
