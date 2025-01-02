@@ -262,7 +262,7 @@ function adjustLayout() {
     const mapContainer = document.getElementById('map-container');
     const sideContainer = document.getElementById('side-container');  
    
-    if (window.innerWidth <= 1600) {
+    if (window.innerWidth <= 768) {
         container.style.flexDirection = 'column';
         mapContainer.style.width = '100%';
         mapContainer.style.height = '50vh';
@@ -288,7 +288,7 @@ function adjustSplashScreen() {
   const button = splashScreen.querySelector('#start-button');
 
   // ضبط النصوص والحجم بشكل متناسب
-  if (window.innerWidth >= 1600) {
+  if (window.innerWidth >= 768) {
     h1.style.fontSize = '2.5em;';
     p.style.fontSize = '1.2em';
      p.style.width: '30%';
@@ -297,8 +297,8 @@ function adjustSplashScreen() {
   } else {
     h1.style.fontSize = '1.5';
     p.style.fontSize = '1em';
-      p.style.width: '50%';
-    button.style.fontSize = '18px;';
+      p.style.width: '60%';
+    button.style.fontSize = '14px;';
     button.style.padding = '10px 20px';
   }
 }
