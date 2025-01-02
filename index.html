@@ -200,25 +200,27 @@ body {
 }
 
 @media (max-width: 768px) {
-   #splash-screen {
-        padding: 20px; /* تقليل الحشو ليتناسب مع الشاشات الصغيرة */
+ #splash-screen {
+        padding: 10px; /* تقليل الحشو ليتناسب مع الشاشات الصغيرة */
     }
 
     #splash-screen h1 {
-        font-size: 1.8em; /* تقليل حجم الخط للعنوان */
+        font-size: 1.5em; /* تقليل حجم الخط للعنوان */
         margin-bottom: 10px; /* تقليل المسافة السفلية */
     }
 
     #B_P {
         height: auto; /* جعل الارتفاع يتكيف مع المحتوى */
-        padding-bottom: 20px; /* إضافة مسافة أسفل النص */
-        
+        padding-bottom: 10px; /* إضافة مسافة أسفل النص */
+        overflow: hidden; /* منع العناصر الداخلية من الخروج من الإطار */
     }
 
     #B_P p {
         background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
-        font-size: 1em; /* تقليل حجم الخط للنص */
+        font-size: 0.9em; /* تقليل حجم الخط للنص */
         width: 100%; /* جعل النص يأخذ العرض الكامل */
+        padding: 10px; /* تقليل الحشو الداخلي */
+        margin: 0; /* إزالة الهوامش */
         text-align: center; /* توسيط النص */
         line-height: 1.5; /* ضبط تباعد الأسطر */
     }
@@ -226,12 +228,9 @@ body {
     #splash-screen button {
         position: relative; /* تغيير من absolute إلى relative */
         bottom: auto; /* إزالة القيمة السابقة لـ bottom */
-        margin-top: 20px; /* إضافة مسافة من الأعلى */
-       display: flex;
-    justify-content: center; /* توسيط العناصر أفقيًا */
-        transform: none; /* إزالة التحويل */
-        width: 20%; /* جعل الزر يأخذ عرضًا أكبر */
-        font-size: 1.2em; /* تقليل حجم الخط للزر */
+        margin: 10px auto; /* توسيط الزر */
+        width: 80%; /* جعل الزر يأخذ عرضًا أكبر */
+        font-size: 1em; /* تقليل حجم الخط للزر */
         padding: 10px 20px; /* تعديل الحشو */
     }
     #container {
