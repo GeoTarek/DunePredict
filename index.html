@@ -254,6 +254,30 @@ body {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+window.addEventListener('resize', adjustLayout);
+window.addEventListener('load', adjustLayout);
+
+function adjustLayout() {
+    const container = document.getElementById('container');
+    const mapContainer = document.getElementById('map-container');
+    const sideContainer = document.getElementById('side-container');
+
+    if (window.innerWidth <= 768) {
+        container.style.flexDirection = 'column';
+        mapContainer.style.width = '100%';
+        mapContainer.style.height = '50vh';
+        sideContainer.style.width = '100%';
+        sideContainer.style.height = '50vh';
+    } else {
+        container.style.flexDirection = 'row';
+        mapContainer.style.width = '70%';
+        mapContainer.style.height = '100vh';
+        sideContainer.style.width = '30%';
+        sideContainer.style.height = '100vh';
+    }
+}
+
+        
         function startApp() {
     // إخفاء شاشة الترحيب
     document.getElementById('splash-screen').style.display = 'none';
