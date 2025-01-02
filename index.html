@@ -277,8 +277,7 @@ function adjustLayout() {
         sideContainer.style.height = '100vh';
     }
 }
-
-        window.addEventListener('resize', adjustSplashScreen);
+window.addEventListener('resize', adjustSplashScreen);
 window.addEventListener('load', adjustSplashScreen);
 
 function adjustSplashScreen() {
@@ -289,21 +288,18 @@ function adjustSplashScreen() {
 
   // ضبط النصوص والحجم بشكل متناسب
   if (window.innerWidth <= 768) {
-      h1.style.fontSize = '1.5';
-    p.style.fontSize = '1em';
-      p.style.width: '60%';
-    button.style.fontSize = '14px;';
-    button.style.padding = '10px 20px';
-
+    h1.style.fontSize = '6vw';
+    p.style.fontSize = '5vw';
+    button.style.fontSize = '3vw';
+    button.style.padding = '15px 30px';
   } else {
-        h1.style.fontSize = '2.5em;';
-    p.style.fontSize = '1.2em';
-     p.style.width: '30%';
-    button.style.fontSize = '24px;';
-    button.style.padding = '10px 40px;';
+    h1.style.fontSize = '4vw';
+    p.style.fontSize = '2.5vw';
+    button.style.fontSize = '2vw';
+    button.style.padding = '10px 20px';
   }
 }
- 
+
 
 
     
