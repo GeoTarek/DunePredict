@@ -288,18 +288,19 @@ function adjustSplashScreen() {
   const button = splashScreen.querySelector('#start-button');
 
   // ضبط النصوص والحجم بشكل متناسب
-  if (window.innerWidth >= 768) {
-    h1.style.fontSize = '2.5em;';
-    p.style.fontSize = '1.2em';
-     p.style.width: '30%';
-    button.style.fontSize = '24px;';
-    button.style.padding = '10px 40px;';
-  } else {
-    h1.style.fontSize = '1.5';
+  if (window.innerWidth <= 768) {
+      h1.style.fontSize = '1.5';
     p.style.fontSize = '1em';
       p.style.width: '60%';
     button.style.fontSize = '14px;';
     button.style.padding = '10px 20px';
+
+  } else {
+        h1.style.fontSize = '2.5em;';
+    p.style.fontSize = '1.2em';
+     p.style.width: '30%';
+    button.style.fontSize = '24px;';
+    button.style.padding = '10px 40px;';
   }
 }
  
