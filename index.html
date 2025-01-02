@@ -200,13 +200,38 @@ body {
 }
 
 @media (max-width: 768px) {
-    #par,#star {
-       
-        float: none;
-        margin: 10px 0px 5px 30px;
-                
-            }
-    #container,#par,#star {
+   #splash-screen {
+        padding: 20px; /* تقليل الحشو ليتناسب مع الشاشات الصغيرة */
+    }
+
+    #splash-screen h1 {
+        font-size: 1.8em; /* تقليل حجم الخط للعنوان */
+        margin-bottom: 10px; /* تقليل المسافة السفلية */
+    }
+
+    #B_P {
+        height: auto; /* جعل الارتفاع يتكيف مع المحتوى */
+        padding-bottom: 20px; /* إضافة مسافة أسفل النص */
+    }
+
+    #B_P p {
+        font-size: 1em; /* تقليل حجم الخط للنص */
+        width: 100%; /* جعل النص يأخذ العرض الكامل */
+        text-align: center; /* توسيط النص */
+        line-height: 1.5; /* ضبط تباعد الأسطر */
+    }
+
+    #splash-screen button {
+        position: relative; /* تغيير من absolute إلى relative */
+        bottom: auto; /* إزالة القيمة السابقة لـ bottom */
+        margin-top: 20px; /* إضافة مسافة من الأعلى */
+        margin-right: auto; /* توسيط الزر */
+        transform: none; /* إزالة التحويل */
+        width: 80%; /* جعل الزر يأخذ عرضًا أكبر */
+        font-size: 1.2em; /* تقليل حجم الخط للزر */
+        padding: 10px 20px; /* تعديل الحشو */
+    }
+    #container {
                 flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
             }
             #map-container, #side-container {
