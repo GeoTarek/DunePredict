@@ -200,10 +200,11 @@ body {
 }
 
 @media (max-width: 768px) {
-    #map-container,#side-container, #B_P p ,#splash-screen button  {
+    #map-container,#side-container,#par,#star {
+        display:block;
         float: none;
-        margin: auto;
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
+        margin: auto
+                
             }
         }
     
@@ -214,12 +215,12 @@ body {
         <!-- شاشة الترحيب -->
 <div id="splash-screen">
     <h1>مرحباً بك في نظام التنبؤ بحركة الكثبان الرملية</h1>
-        <div id="B_P"> <p>
+        <div id="B_P"> <p id="par">
         هذا الموقع يستخدم خوارزميات حديثة لتوقع اتجاه حركة الكثبان الرملية.<br>
         يهدف إلى تقديم حلول للتخفيف من مشكلة زحف الكثبان الرملية وتأثيرها على الطرق والمناطق العمرانية.<br>
         نصيحة: استخدم هذا النظام لتحليل المناطق الأكثر عرضة للخطر واتخاذ القرارات المناسبة.
     </p>
-    <button type="button" onclick="startApp()">البدء</button> </div>
+    <button id="star" type="button" onclick="startApp()">البدء</button> </div>
 </div>
     
     <!-- الحاوية الرئيسية -->
@@ -256,7 +257,6 @@ body {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-
         function startApp() {
     // إخفاء شاشة الترحيب
     document.getElementById('splash-screen').style.display = 'none';
