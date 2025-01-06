@@ -6,33 +6,38 @@
     <title>حساب الإحداثيات الجديدة</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        /* Ensure box-sizing is applied to all elements */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             height: 100vh;
-            flex-direction: row; /* اتجاه افتراضي */
+            flex-direction: row; /* Default direction */
         }
 
-        /* تصمييم الخريطة */
+        /* Map styling */
         #map {
             border: 2px solid #493415;
             border-radius: 10px;
             margin: 3px;
             height: 100%;
-            width: 70%; /* تحديد نصف العرض للخريطة */
+            width: 70%; /* Half width for map */
         }
 
-        /* تصمييم نموذج الإدخال ونتائج الحساب */
+        /* Content styling */
         .content {
-            width: 30%; /* تحديد نصف العرض للنموذج والنتائج */
-            padding: 0px 20px;
+            width: 30%; /* Half width for form and results */
+            padding: 20px;
             height: 100vh;
             overflow-y: auto;
             background: linear-gradient(to top, #8a80ac, #9056a3, #5d224b, #8a80ac);
             background: linear-gradient(to top right, #ff999960 0%, #e9b59ba5 0%, #FF9999 60%, #e9b59b8d 100%);
-            border: 3px solid #333; /* إطار خارجي مميز */
+            border: 3px solid #333; /* Outer border */
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -40,10 +45,10 @@
             justify-content: center;
         }
 
-        /* تنسيق الجداول */
+        /* Table styling */
         table {
             width: 100%;
-            margin-top: 0px 10px 5px 10px;
+            margin-top: 5px;
             border-collapse: collapse;
         }
 
@@ -59,15 +64,15 @@
             background-color: white;
         }
 
-        /* تنسيق النموذج */
+        /* Form styling */
         form label {
-            width: 100%; /* يملأ عرض الحاوية */
+            width: 100%; /* Full width of container */
             color: rgb(43, 2, 2);
             margin-bottom: 5px;
             font-weight: bold;
             display: flex;
-            flex-direction: column; /* ترتيب العمودي */
-            align-items: flex-end; /* محاذاة لليمين */
+            flex-direction: column; /* Vertical ordering */
+            align-items: flex-end; /* Right alignment */
         }
 
         form input {
@@ -125,78 +130,73 @@
             background-color: #caa7a7;
         }
 
-        /* تخطيط الاستجابة للواجهة */
-       @media (max-width: 768px) {
-    body {
-        flex-direction: column; /* تغيير الاتجاه إلى عمودي */
-        height: 100vh; /* تأكيد على استخدام كامل ارتفاع الشاشة */
-        margin: 0; /* إزالة الهامش الافتراضي */
-    }
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column; /* Change direction to column */
+                height: 100vh; /* Ensure full height */
+                margin: 0; /* Remove default margin */
+            }
 
-    #map {
-        width: 100%; /* العرض الكامل */
-        height: 50vh; /* نصف ارتفاع الشاشة */
-        margin-bottom: 10px; /* إضافة مسافة بين الخريطة والمحتوى */
-    }
+            #map {
+                width: 100%; /* Full width */
+                height: 50vh; /* Half height */
+                /* Removed margin-bottom */
+            }
 
-    .content {
-        width: 100%; /* العرض الكامل */
-        height: 50vh; /* نصف ارتفاع الشاشة */
-        overflow-y: auto; /* تمكين التمرير إذا كان المحتوى يتجاوز الارتفاع */
-        padding: 10px; /* تقليل المسافات الداخلية */
-        box-sizing: border-box; /* تضمين الـ padding في الحسابات */
-        display: flex;
-        flex-direction: column; /* ترتيب العناصر عموديًا */
-        gap: 10px; /* إضافة مسافة بين العناصر */
-    }
+            .content {
+                width: 100%; /* Full width */
+                height: 50vh; /* Half height */
+                padding: 10px; /* Adjust padding as needed */
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    h2 {
-        margin: 0; /* إزالة الهوامش */
-        font-size: 18px; /* تقليص حجم الخط في العنوان */
-        padding: 5px; /* تقليل المسافات الداخلية */
-        text-align: center; /* محاذاة النص إلى الوسط */
-    }
+            h2 {
+                margin: 0;
+                font-size: 18px;
+                padding: 5px;
+                text-align: center;
+            }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px; /* إضافة مسافة بين العناصر */
-    }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    form label, form input {
-        width: 100%; /* ملء العرض الكامل للنموذج */
-        box-sizing: border-box; /* تضمين الـ padding في الحسابات */
-    }
+            form label, form input {
+                width: 100%; /* Full width for form elements */
+            }
 
-    table {
-        margin-top: 10px; /* إضافة مسافة صغيرة بين الجدول والنموذج */
-        width: 100%; /* العرض الكامل */
-    }
+            table {
+                margin-top: 10px;
+                width: 100%;
+            }
 
-    #b1, #b2 {
-        width: 100%; /* جعل الأزرار تشغل العرض الكامل */
-        margin: 10px 0; /* تقليل الهوامش */
-    }
-}
+            #b1, #b2 {
+                width: 100%; /* Full width for buttons */
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
+    <div id="map"></div> <!-- Map on the left side -->
     
     <div class="content">
         <h2>حساب الإحداثيات الجديدة</h2>
-        <!-- نموذج إدخال البيانات -->
+        <!-- Data input form -->
         <form id="dataForm">
             <div style="display: flex; justify-content: space-between; gap: 5px; margin-bottom: 5px;">
                 <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
                     <label for="latitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط العرض</label>
-                    <input step="0.0001" type="number" id="latitude" required style=" background-color: whitesmoke ;width: 100%;
-                    padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
+                    <input step="0.0001" type="number" id="latitude" required style="background-color: whitesmoke; width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #333;">
                 </div>
-                <div style="border: 2px solid #333; border-radius: 10px;padding:5px 5px; width: 50%;">
+                <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
                     <label for="longitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط الطول</label>
-                    <input step="0.0001" type="number" id="longitude" required style="background-color: whitesmoke;width: 100%;
-                    padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
+                    <input step="0.0001" type="number" id="longitude" required style="background-color: whitesmoke; width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #333;">
                 </div>
             </div>
             
@@ -206,15 +206,15 @@
             <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
             <input step="0.0001" type="number" id="windspeed" required><br>
 
-            <label for="time" >:الزمن (ساعات)</label>
-            <input  step="0.0001" type="number" id="time" required><br>
+            <label for="time">:الزمن (ساعات)</label>
+            <input step="0.0001" type="number" id="time" required><br>
 
             <button id="b1" class="del" onclick="clearInputs()">مسح البيانات</button>
             <button id="b2" type="submit">حساب</button>
         </form>
 
         <h3>النتائج:</h3>
-        <!-- عرض الجدول -->
+        <!-- Table to display results -->
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -230,20 +230,20 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // إنشاء الخريطة باستخدام Leaflet
-        var map = L.map('map').setView([31.2, 30.0], 6);  // تعيين الإحداثيات الأساسية
+        // Map initialization with Leaflet
+        var map = L.map('map').setView([31.2, 30.0], 6); // Set initial coordinates
 
-        // إضافة طبقة الخريطة
+        // Add tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // إعادة رسم الخريطة عند تغيير حجم النافذة
+        // Redraw map on window resize
         window.addEventListener('resize', function() {
             map.invalidateSize();
         });
 
-        // بقية الكود JavaScript يبقى كما هو
+        // JavaScript code remains the same
     </script>
 </body>
 </html>
