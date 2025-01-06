@@ -120,31 +120,49 @@
         }
 
       /* تخطيط الاستجابة للواجهة */
+/* ميديا كويري للأجهزة الصغيرة */
 @media (max-width: 768px) {
     body {
-        flex-direction: column; /* ترتيب العناصر عموديًا */
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        height: 100vh;
     }
 
-    #map, .content {
-        width: 100%; /* تعيين العرض الكامل للعنصرين */
-        height: 50vh; /* تعيين ارتفاع الخريطة والنموذج ليأخذ 50% من الشاشة */
+    #map {
+        width: 100%;
+        height: 50vh; /* تحديد ارتفاع الخريطة */
     }
 
     .content {
-        display: flex; /* استخدام flexbox لتنسيق العناصر */
-        flex-direction: column; /* ترتيب العناصر عموديًا */
-        justify-content: flex-start; /* محاذاة العناصر من الأعلى */
-        padding: 10px; /* إضافة بعض الحشو لتحسين التباعد */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: auto; /* لضمان أن الحجم مرن */
+        padding: 10px;
     }
 
     h2 {
-        margin-top: 20px; /* إضافة مسافة أعلى العنوان */
+        text-align: center;
+        margin: 20px 0;
     }
 
     form {
-        margin-top: 10px; /* إضافة مسافة أعلى النموذج */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    input, button {
+        width: 80%; /* ضبط عرض العناصر داخل النموذج */
+        margin-top: 10px;
+        padding: 10px;
     }
 }
+
 
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
