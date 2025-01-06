@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        #Main {
-      margin: 0;
-            padding: 0;
-        }
+      
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -124,14 +121,18 @@
 
         /* تخطيط الاستجابة للواجهة */
         @media (max-width: 768px) {
-            #Main{
-                   flex-direction: column; /* ترتيب العناصر عموديًا */
-            }
+          
             #map, .content {
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
-                height: 100%;
+               float: none;
             }
-       
+        #map{
+             height: 50%;
+            width: 100%; 
+        }
+          .content{
+             height: 50%;
+            width: 100%;  
+          }  
         }
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
@@ -164,7 +165,7 @@ h3 {
     </style>
 </head>
 <body>
-    <div id="Main">
+    
     <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
     
     <div class="content">
@@ -212,7 +213,7 @@ h3 {
         </table>
         <button id="undo" onclick="window.location.href='jsتجربة.html';">الانتقال إلى الصفحة السابقة</button>
     </div>
-    </div>
+    
     <script>
         // إنشاء الخريطة باستخدام Leaflet
         var map = L.map('map').setView([31.2, 30.0], 6);  // تعيين الإحداثيات الأساسية
