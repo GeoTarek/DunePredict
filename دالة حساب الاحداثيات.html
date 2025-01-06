@@ -126,54 +126,58 @@
         }
 
         /* تخطيط الاستجابة للواجهة */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column; /* تغيير الاتجاه إلى عمودي */
-                height: 100vh; /* تأكيد على استخدام كامل ارتفاع الشاشة */
-                margin: 0; /* إزالة الهامش الافتراضي */
-            }
+       @media (max-width: 768px) {
+    body {
+        flex-direction: column; /* تغيير الاتجاه إلى عمودي */
+        height: 100vh; /* تأكيد على استخدام كامل ارتفاع الشاشة */
+        margin: 0; /* إزالة الهامش الافتراضي */
+    }
 
-            #map {
-                width: 100%; /* العرض الكامل */
-                height: 50vh; /* نصف ارتفاع الشاشة */
-                margin-bottom: 10px; /* إضافة مسافة بين الخريطة والمحتوى */
-            }
+    #map {
+        width: 100%; /* العرض الكامل */
+        height: 50vh; /* نصف ارتفاع الشاشة */
+        margin-bottom: 10px; /* إضافة مسافة بين الخريطة والمحتوى */
+    }
 
-            .content {
-                width: 100%; /* العرض الكامل */
-                height: 50vh; /* نصف ارتفاع الشاشة */
-                overflow-y: auto; /* تمكين التمرير إذا كان المحتوى يتجاوز الارتفاع */
-                padding: 10px; /* تقليل المسافات الداخلية */
-                box-sizing: border-box; /* تضمين الـ padding في الحسابات */
-            }
+    .content {
+        width: 100%; /* العرض الكامل */
+        height: 50vh; /* نصف ارتفاع الشاشة */
+        overflow-y: auto; /* تمكين التمرير إذا كان المحتوى يتجاوز الارتفاع */
+        padding: 10px; /* تقليل المسافات الداخلية */
+        box-sizing: border-box; /* تضمين الـ padding في الحسابات */
+        display: flex;
+        flex-direction: column; /* ترتيب العناصر عموديًا */
+        gap: 10px; /* إضافة مسافة بين العناصر */
+    }
 
-            h2 {
-                margin-top: 10px; /* تأكيد وجود مسافة من الأعلى */
-                font-size: 18px; /* تقليص حجم الخط في العنوان */
-                padding: 5px; /* تقليل المسافات الداخلية */
-            }
+    h2 {
+        margin: 0; /* إزالة الهوامش */
+        font-size: 18px; /* تقليص حجم الخط في العنوان */
+        padding: 5px; /* تقليل المسافات الداخلية */
+        text-align: center; /* محاذاة النص إلى الوسط */
+    }
 
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 10px; /* إضافة مسافة بين العناصر */
-            }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* إضافة مسافة بين العناصر */
+    }
 
-            form label, form input {
-                width: 100%; /* ملء العرض الكامل للنموذج */
-                box-sizing: border-box; /* تضمين الـ padding في الحسابات */
-            }
+    form label, form input {
+        width: 100%; /* ملء العرض الكامل للنموذج */
+        box-sizing: border-box; /* تضمين الـ padding في الحسابات */
+    }
 
-            table {
-                margin-top: 10px; /* إضافة مسافة صغيرة بين الجدول والنموذج */
-                width: 100%; /* العرض الكامل */
-            }
+    table {
+        margin-top: 10px; /* إضافة مسافة صغيرة بين الجدول والنموذج */
+        width: 100%; /* العرض الكامل */
+    }
 
-            #b1, #b2 {
-                width: 100%; /* جعل الأزرار تشغل العرض الكامل */
-                margin: 10px 0; /* تقليل الهوامش */
-            }
-        }
+    #b1, #b2 {
+        width: 100%; /* جعل الأزرار تشغل العرض الكامل */
+        margin: 10px 0; /* تقليل الهوامش */
+    }
+}
     </style>
 </head>
 <body>
