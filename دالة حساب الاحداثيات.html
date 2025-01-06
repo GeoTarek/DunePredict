@@ -145,37 +145,40 @@ h3 {
     background-color: #caa7a7;
 
 } 
-       @media (max-width: 768px) {
-       body {
-        flex-direction: column; /* Stack map and content vertically */
-        height: 100vh; /* تأكيد على استخدام كامل ارتفاع الشاشة */
-        margin: 0; /* إزالة الهامش الافتراضي */
+     @media (max-width: 768px) {
+    body {
+        flex-direction: column; /* ترتيب العناصر عموديًا */
+        height: 100vh;
+        margin: 0;
     }
 
     #map {
-        width: 100%; /* Full width on smaller screens */
-        height: 50%; /* نصف الارتفاع من الشاشة */
-        margin-bottom: 20px; /* إضافة مسافة بين الخريطة والمحتوى */
+        width: 100%;
+        height: 50%;
+        margin-bottom: 20px;
     }
 
     .content {
-        width: 100%; /* Full width on smaller screens */
-        height: 50%; /* نصف الارتفاع من الشاشة */
-        overflow-y: auto; /* Enable scrolling if content overflows */
-        margin-top: 0; /* إزالة المسافة العلوية */
+        width: 100%;
+        height: 50%;
+        overflow-y: auto;
+        margin-top: 0;
     }
+
     h2 {
-         margin-top: 10px; /* تأكيد وجود مسافة من الأعلى */
-        font-size: 18px; /* تقليص حجم الخط في العنوان */
-        padding: 5px; /* تقليص المسافات داخل العنوان */
+        margin-top: 10px;
+        font-size: 18px;
+        padding: 5px;
+        text-align: center; /* محاذاة العنوان إلى المنتصف */
+        width: 100%;
     }
 
     form label, form input {
-        width: 100%; /* ملء العرض الكامل للنموذج */
+        width: 100%;
     }
 
     table {
-        margin-top: 10px; /* إضافة مسافة صغيرة بين الجدول والنموذج */
+        margin-top: 10px;
     }
 }
 
