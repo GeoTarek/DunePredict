@@ -5,50 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حساب الإحداثيات الجديدة</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        /* Ensure box-sizing is applied to all elements */
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             height: 100vh;
-            flex-direction: row; /* Default direction */
+            flex-direction: column; /* تغيير الاتجاه ليصبح عموديًا */
         }
 
-        /* Map styling */
+        /* تصمييم الخريطة */
         #map {
             border: 2px solid #493415;
             border-radius: 10px;
             margin: 3px;
-            height: 100%;
-            width: 70%; /* Half width for map */
+            height: 60%; /* تغيير الارتفاع ليصبح أقل على الشاشات الصغيرة */
+            width: 100%; /* جعل الخريطة تأخذ عرض الشاشة بالكامل */
         }
 
-        /* Content styling */
+        /* تصمييم نموذج الإدخال ونتائج الحساب */
         .content {
-            width: 30%; /* Half width for form and results */
+            width: 100%; /* جعل النموذج يأخذ العرض بالكامل */
             padding: 20px;
-            height: 100vh;
-            overflow-y: auto;
-            background: linear-gradient(to top, #8a80ac, #9056a3, #5d224b, #8a80ac);
+            background: linear-gradient(to top, #8a80ac, #9056a3,#5d224b,#8a80ac);
             background: linear-gradient(to top right, #ff999960 0%, #e9b59ba5 0%, #FF9999 60%, #e9b59b8d 100%);
-            border: 3px solid #333; /* Outer border */
+            border: 3px solid #333;
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
         }
 
-        /* Table styling */
+        /* تنسيق الجداول */
         table {
             width: 100%;
-            margin-top: 5px;
+            margin-top: 10px;
             border-collapse: collapse;
         }
 
@@ -56,7 +52,6 @@
             background-color: #444;
             color: white;
         }
-
         table, th, td {
             border: 1px solid black;
             padding: 8px;
@@ -64,40 +59,65 @@
             background-color: white;
         }
 
-        /* Form styling */
+        /* تنسيق النموذج */
         form label {
-            width: 100%; /* Full width of container */
             color: rgb(43, 2, 2);
             margin-bottom: 5px;
             font-weight: bold;
             display: flex;
-            flex-direction: column; /* Vertical ordering */
-            align-items: flex-end; /* Right alignment */
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
         }
 
         form input {
             width: 95%;
             padding: 8px;
-            margin-top: 2px;
+            margin-top: 5px;
             border-radius: 15px;
             border: 2px solid #e6c7c7;
         }
 
         #b1, #b2 {
-            background-color: #4b4e4b;
+            width: 120px;
+            color: aliceblue;
+            padding: 10px 15px;
             border-radius: 40px 15px;
             border: 3px solid #151414;
             cursor: pointer;
-            width: 120px;
-            padding: 10px;
-            margin: 20px 25px;
+            margin-top: 20px;
             font: italic bold 16px fantasy;
-            color: aliceblue;
-            box-sizing: border-box;
         }
 
         #b1:hover, #b2:hover {
             background-color: #b5bbb8;
+        }
+
+        /* تخطيط الاستجابة للواجهة */
+        @media (max-width: 768px) {
+            #map {
+                height: 50%; /* تقليل ارتفاع الخريطة على الشاشات الصغيرة */
+            }
+
+            .content {
+                width: 100%; /* جعل النموذج يشغل العرض الكامل */
+                padding: 10px; /* تقليل المسافات الداخلية */
+            }
+
+            /* تغيير تنسيق الجداول والنماذج على الشاشات الصغيرة */
+            table, th, td {
+                font-size: 14px; /* تقليل حجم النص */
+                padding: 6px;
+            }
+
+            form label, form input {
+                width: 100%; /* جعل الحقول والنماذج تأخذ العرض الكامل */
+            }
+
+            #b1, #b2 {
+                width: 100%; /* جعل الأزرار تأخذ العرض الكامل */
+                padding: 12px 0; /* زيادة ارتفاع الأزرار */
+            }
         }
 
         h2 {
@@ -130,98 +150,40 @@
             background-color: #caa7a7;
         }
 
-        /* Responsive layout */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column; /* Change direction to column */
-                height: 100vh; /* Ensure full height */
-                margin: 0; /* Remove default margin */
-            }
-
-            #map {
-                width: 100%; /* Full width */
-                height: 50vh; /* Half height */
-                /* Removed margin-bottom */
-            }
-
-            .content {
-                width: 100%; /* Full width */
-                height: 50vh; /* Half height */
-                padding: 10px; /* Adjust padding as needed */
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            h2 {
-                margin: 0;
-                font-size: 18px;
-                padding: 5px;
-                text-align: center;
-            }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            form label, form input {
-                width: 100%; /* Full width for form elements */
-            }
-
-            table {
-                margin-top: 10px;
-                width: 100%;
-            }
-
-            #b1, #b2 {
-                width: 100%; /* Full width for buttons */
-                margin: 10px 0;
-            }
-            .input-container {
-        flex-direction: column;
-    }
-
-    .input-field {
-        width: 100%;
-    }
-        }
     </style>
 </head>
 <body>
-    <div id="map"></div> <!-- Map on the left side -->
-    
+    <div id="map"></div>
     <div class="content">
         <h2>حساب الإحداثيات الجديدة</h2>
-        <!-- Data input form -->
         <form id="dataForm">
-            <div style="display: flex; justify-content: space-between; gap: 5px; margin-bottom: 5px;">
-                <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
-                    <label for="latitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط العرض</label>
-                    <input step="0.0001" type="number" id="latitude" required style="background-color: whitesmoke; width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #333;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; gap: 5px;">
+                    <div style="width: 50%;">
+                        <label for="latitude">:خط العرض</label>
+                        <input step="0.0001" type="number" id="latitude" required>
+                    </div>
+                    <div style="width: 50%;">
+                        <label for="longitude">:خط الطول</label>
+                        <input step="0.0001" type="number" id="longitude" required>
+                    </div>
                 </div>
-                <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
-                    <label for="longitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط الطول</label>
-                    <input step="0.0001" type="number" id="longitude" required style="background-color: whitesmoke; width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #333;">
-                </div>
+
+                <label for="direction">:الاتجاه (بالدرجات)</label>
+                <input step="0.0001" type="number" id="direction" required>
+
+                <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
+                <input step="0.0001" type="number" id="windspeed" required>
+
+                <label for="time">:الزمن (ساعات)</label>
+                <input step="0.0001" type="number" id="time" required>
+
+                <button id="b1" type="button" onclick="clearInputs()">مسح البيانات</button>
+                <button id="b2" type="submit">حساب</button>
             </div>
-            
-            <label for="direction">:الاتجاه (بالدرجات)</label>
-            <input step="0.0001" type="number" id="direction" required><br>
-
-            <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
-            <input step="0.0001" type="number" id="windspeed" required><br>
-
-            <label for="time">:الزمن (ساعات)</label>
-            <input step="0.0001" type="number" id="time" required><br>
-
-            <button id="b1" class="del" onclick="clearInputs()">مسح البيانات</button>
-            <button id="b2" type="submit">حساب</button>
         </form>
 
         <h3>النتائج:</h3>
-        <!-- Table to display results -->
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -235,22 +197,70 @@
         <button id="undo" onclick="window.location.href='jsتجربة.html';">الانتقال إلى الصفحة السابقة</button>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Map initialization with Leaflet
-        var map = L.map('map').setView([31.2, 30.0], 6); // Set initial coordinates
+        // إنشاء الخريطة باستخدام Leaflet
+        var map = L.map('map').setView([31.2, 30.0], 6);
 
-        // Add tile layer
+        // إضافة طبقة الخريطة
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Redraw map on window resize
-        window.addEventListener('resize', function() {
-            map.invalidateSize();
+        let idCounter = 1;
+        // دالة لإضافة الإحداثيات إلى الجدول والخريطة
+        function addResultToTableAndMap(id, lat, lon) {
+            // إضافة البيانات إلى الجدول
+            var table = document.getElementById("resultsTable").getElementsByTagName('tbody')[0];
+            var row = table.insertRow();
+            row.innerHTML = `<td>${idCounter}</td><td>${lat}</td><td>${lon}</td>`;
+
+            idCounter++;
+            // إسقاط ماركر على الخريطة
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup(`ID: ${idCounter-1}<br>Lat: ${lat},<br> Lon: ${lon}`)
+                .openPopup();
+        }
+
+        // دالة لإرسال البيانات إلى الخادم
+        document.getElementById('dataForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var latitude = parseFloat(document.getElementById('latitude').value);
+            var longitude = parseFloat(document.getElementById('longitude').value);
+            var direction = parseFloat(document.getElementById('direction').value);
+            var windspeed = parseFloat(document.getElementById('windspeed').value);
+            var time = parseFloat(document.getElementById('time').value);
+
+            // إرسال البيانات إلى الخادم باستخدام fetch
+            fetch('http://127.0.0.1:6060/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    latitude: latitude,
+                    longitude: longitude,
+                    direction: direction,
+                    windspeed: windspeed,
+                    time: time
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // إضافة الإحداثيات الجديدة إلى الجدول والخريطة
+                addResultToTableAndMap(data.id, data.new_latitude, data.new_longitude);
+            })
+            .catch(error => console.error('Error:', error));
         });
 
-        // JavaScript code remains the same
+        // دالة لمسح البيانات المدخلة في النموذج
+        function clearInputs() {
+            document.getElementById('latitude').value = '';
+            document.getElementById('longitude').value = '';
+            document.getElementById('direction').value = '';
+            document.getElementById('windspeed').value = '';
+            document.getElementById('time').value = '';
+        }
     </script>
 </body>
 </html>
