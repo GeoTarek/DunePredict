@@ -5,212 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حساب الإحداثيات الجديدة</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+
+        #container {
             display: flex;
             height: 100vh;
+            gap: 4px;
         }
 
-        /* تصمييم الخريطة */
-        #map {
-            border: 2px solid #493415;
-            border-radius: 10px;
-            margin:3px;
-            height: 100%;
-            width: 70%; /* تحديد نصف العرض للخريطة */
-        }
-
-        /* تصمييم نموذج الإدخال ونتائج الحساب */
-        .content {
-            width: 30%; /* تحديد نصف العرض للنموذج والنتائج */
-            padding: 0px 20px;
+        #map-container {
+            border: 2px solid #866a6a;
             height: 100vh;
-            overflow-y: auto;
-            background: linear-gradient(to top, #8a80ac, #9056a3,#5d224b,#8a80ac);
-            background: linear-gradient(to top right,#ff999960 0%,#e9b59ba5 0%, #FF9999 60%, #e9b59b8d 100% );
-            border: 3px solid #333; /* إطار خارجي مميز */
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(210, 166, 166, 0.2);
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+            border-radius: 3px;
+        }
+        #side-container {
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to bottom, #c94b4b, #7e57b7);
+            padding: 20px;
+            border: 3px solid #333;
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            display: flex; /* استخدام flexbox للتنسيق */
-            flex-direction: column; /* ترتيب العناصر عموديًا */
-            justify-content: center; /* محاذاة العناصر رأسيًا */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
-
-        /* تنسيق الجداول */
-        table {
+        #side-container label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        #side-container input[type="file"],
+        #side-container button {
+            background: #444;
             width: 100%;
-            margin-top: 0px 10px 5px 10px;
+            padding: 10px;
+            color: #ddd;
+            border: 1px solid #ddd;
+            border-radius: 15px 15px;
+            margin-bottom:10px ;
+            margin-top:5px;
+            cursor: pointer;
+        }
+        #side-container button {
+            background: #444;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom:10px ;
+        }
+        #side-container button:hover {
+            background: #3c273d;
+        }
+        #result-table {
+            width: 100%;
             border-collapse: collapse;
         }
-
-        table th {
-                background-color: #444;
-                color: white;
-        }
-        table, th, td {
-            border: 1px solid black;
+        #result-table th,
+        #result-table td {
+            border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-            background-color: white;
         }
-
-        /* تنسيق النموذج */
-        form label {
-            width: 100%; /* يملأ عرض الحاوية */
-            color: rgb(43, 2, 2);
-            margin-bottom: 5px;
-            font-weight: bold;
+        #result-table th {
+            background: #61666b;
+            color: #fff;
+        }
+        #result-table td {
+            background: #f9f9f9;
+        }
+        #pr {
+            width: 50%;
+            height: 10%;
+            margin: 20px 100px;
+            padding:5px 15px;
             display: flex;
-            flex-direction: column; /* ترتيب العمودي */
-            align-items: flex-end; /* محاذاة لليمين */
+            flex-direction: row;
+            justify-content: center;
+            font-weight: bold;
+            font:italic bold 18px fantasy;
+            border: 3px solid #333;
+            border-radius: 80px 15px;
+            background-color: gray;
         }
-
-        form input {
-            width: 95%;
-            padding: 8px;
-            margin-top: 2px;
-            border-radius: 15px;
-            border: 2px solid #e6c7c7;
+        #up {
+            margin-top: 10px;
+            flex-direction: column;
+            justify-content: right;
         }
-
-        #b1 {
-            background-color: #4b4e4b;
-            border-radius: 40px 15px;
-            border: 3px solid #151414;
-            cursor: pointer;
-            width: auto; /* السماح بالعرض التلقائي */
-            padding: 10px 10px; /* تنسيق داخلي */
-            white-space: nowrap;
-            margin: 20px 25px; /* إزالة المسافة الافتراضية */
-            font: italic bold  16px fantasy;
-            color: aliceblue;
-            box-sizing: border-box;
+        #up span {
+            color: #4334f0;
+            background-color: darkgrey;
+            font-weight: bold;
+            padding: 1px;
+            border-radius:3px;
         }
-        #b2 {
-            background-color:  #4b4e4b;
-            border-radius: 40px 15px;
-            border: 3px solid #151414;
-            cursor: pointer;
-            width: auto; /* السماح بالعرض التلقائي */
-            padding: 10px 15px; /* تنسيق داخلي */
-            margin: 20px 25px; /* إزالة المسافة الافتراضية */
-            font: italic bold  16px fantasy;
-            color: aliceblue;
-        
-
-
+        #title {
+            width: 100%;
+            height: 20%;
+            background-color: #61666b;
+            font:italic bold 24px serif;
+            border:1px solid #3e2c2c;
+            border-radius:150px 15px ;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        #b1, #b2 {
-                width: 120px;
-                color: aliceblue;
-        }
-
-
-        #b1:hover {
-            background-color:#b5bbb8;
-        }
-        #b2:hover {
-            background-color: #b5bbb8;
-        }
-
-        /* تخطيط الاستجابة للواجهة */
         @media (max-width: 768px) {
-            #map, .content {
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
+            #container {
+                flex-direction: column;
+            }
+            #map-container, #side-container {
+                width: 100%;
+                height: 50vh;
+            }
+            #title {
+                font-size: 14px;
+            }
+            #pr {
+                font-size: 0.9em;
+                border: 0.1em solid #333;
+            }
+            #container button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+                border: 0.1em solid #b8870b;
             }
         }
-        h2 {
-             display: inline-block; /* لتقليص العرض حول النص */
-            text-align:center; /* لمحاذاة النص داخل الإطار */
-            border: 3px solid #151414; /* إضافة الإطار */
-             background-color: #444; /* لون الخلفية */
-             border-radius: 80px 15px; /* تدوير الزوايا */
-             color: aliceblue; /* لون النص */
-             padding: 5px 5px; /* مسافة بين النص والإطار */
-            margin: 0px 10px 30px 10px;
-}
-h3 {
-    margin-bottom: 5px; /* تقليل المسافات العلوية والسفلية */
-    color: #5b0909; /* لون النص */
-    text-align:left /* لمحاذاة النص */
-}
-        #undo {
-            margin-top:5px;
-            border-radius:60px 20px;
-            padding: 8px; 
-            font:18px bold; 
-            color:white; 
-            background-color:brown;
-        }
-#undo:hover {
-    background-color: #caa7a7;
-
-} 
-        @media (max-width:  480px) {
-    #map-container,#side-container {
-                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
-            }
-        }
-        .body {
-    font-size: 1.2em;  /* تقليص حجم الخط بشكل أكبر */
-  }
-
     </style>
 </head>
 <body>
-    <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
-    
-    <div class="content">
-        <h2>حساب الإحداثيات الجديدة</h2>
-        <!-- نموذج إدخال البيانات -->
-        <form id="dataForm">
-            <div style="display: flex; justify-content: space-between; gap: 5px; margin-bottom: 5px;">
-                <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
-                    <label for="latitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط العرض</label>
-                    <input step="0.0001" type="number" id="latitude" required style=" background-color: whitesmoke ;width: 100%;
-                    padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
+    <!-- الحاوية الرئيسية -->
+    <div id="container">
+        <!-- حاوية للخريطة -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <!-- حاوية جانبية لرفع الملفات والنتائج -->
+        <div id="side-container">
+            <label id="title">حساب الإحداثيات الجديدة</label>
+            <form id="dataForm">
+                <div style="display: flex; justify-content: space-between; gap: 5px; margin-bottom: 5px;">
+                    <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 50%;">
+                        <label for="latitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط العرض</label>
+                        <input step="0.0001" type="number" id="latitude" required style=" background-color: whitesmoke ;width: 100%;
+                        padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
+                    </div>
+                    <div style="border: 2px solid #333; border-radius: 10px;padding:5px 5px; width: 50%;">
+                        <label for="longitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط الطول</label>
+                        <input step="0.0001" type="number" id="longitude" required style="background-color: whitesmoke;width: 100%;
+                        padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
+                    </div>
                 </div>
-                <div style="border: 2px solid #333; border-radius: 10px;padding:5px 5px; width: 50%;">
-                    <label for="longitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط الطول</label>
-                    <input step="0.0001" type="number" id="longitude" required style="background-color: whitesmoke;width: 100%;
-                    padding: 8px; border-radius: 5px; border: 1px solid #333; box-sizing: border-box;">
-                </div>
-            </div>
-            
-            <label for="direction">:الاتجاه (بالدرجات)</label>
-            <input step="0.0001" type="number" id="direction" required><br>
+                
+                <label for="direction">:الاتجاه (بالدرجات)</label>
+                <input step="0.0001" type="number" id="direction" required><br>
 
-            <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
-            <input step="0.0001" type="number" id="windspeed" required><br>
+                <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
+                <input step="0.0001" type="number" id="windspeed" required><br>
 
-            <label for="time" >:الزمن (ساعات)</label>
-            <input  step="0.0001" type="number" id="time" required><br>
+                <label for="time" >:الزمن (ساعات)</label>
+                <input  step="0.0001" type="number" id="time" required><br>
 
-            <button id="b1" id="del" onclick="clearInputs()">مسح البيانات</button><button id="b2" type="submit">حساب</button>
+                <button id="b1" id="del" onclick="clearInputs()">مسح البيانات</button><button id="b2" type="submit">حساب</button>
+            </form>
 
-        </form>
-
-
-        <h3>النتائج:</h3>
-        <!-- عرض الجدول -->
-        <table id="resultsTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>خط العرض</th>
-                    <th>خط الطول</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <button id="undo" onclick="window.location.href='index.html';">الانتقال إلى الصفحة السابقة</button>
+            <label id="pr">النتائج:</label>
+            <table id="result-table" dir="ltr">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>خط العرض</th>
+                        <th>خط الطول</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button style="margin-top:5px; border-radius: 20px; padding: 7px;"
+            onclick="window.location.href='index.html';">الانتقال إلى الصفحة السابقة</button>
+        </div>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         // إنشاء الخريطة باستخدام Leaflet
         var map = L.map('map').setView([31.2, 30.0], 6);  // تعيين الإحداثيات الأساسية
@@ -224,7 +220,7 @@ h3 {
         // دالة لإضافة الإحداثيات إلى الجدول والخريطة
         function addResultToTableAndMap(id, lat, lon) {
             // إضافة البيانات إلى الجدول
-            var table = document.getElementById("resultsTable").getElementsByTagName('tbody')[0];
+            var table = document.getElementById("result-table").getElementsByTagName('tbody')[0];
             var row = table.insertRow();
             row.innerHTML = `<td>${idCounter}</td><td>${lat}</td><td>${lon}</td>`;
 
