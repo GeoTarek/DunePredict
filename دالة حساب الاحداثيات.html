@@ -146,26 +146,26 @@ h3 {
 
 } 
        @media (max-width: 768px) {
-    body {
-        flex-direction: column; /* ترتيب الخريطة والنموذج عمودياً */
-        height: 100vh; /* تحديد ارتفاع الجسم الكامل */
+       body {
+        flex-direction: column; /* Stack map and content vertically */
+        height: 100vh; /* تأكيد على استخدام كامل ارتفاع الشاشة */
+        margin: 0; /* إزالة الهامش الافتراضي */
     }
 
     #map {
-        width: 100%; /* عرض الخريطة 100% */
-        height: 50%; /* تحديد ارتفاع الخريطة نصف الشاشة */
-        margin-bottom: 10px; /* إضافة مسافة بين الخريطة والنموذج */
+        width: 100%; /* Full width on smaller screens */
+        height: 50%; /* نصف الارتفاع من الشاشة */
+        margin-bottom: 20px; /* إضافة مسافة بين الخريطة والمحتوى */
     }
 
     .content {
-        width: 100%; /* عرض النموذج 100% */
-        height: 50%; /* تحديد ارتفاع النموذج نصف الشاشة */
-        overflow-y: auto; /* تمكين التمرير إذا تجاوز المحتوى الحجم */
-        padding: 15px; /* تعديل المسافة الداخلية */
-        box-sizing: border-box; /* التأكد من أن الحواف والهوامش تؤخذ في الحسبان عند تحديد الأبعاد */
+        width: 100%; /* Full width on smaller screens */
+        height: 50%; /* نصف الارتفاع من الشاشة */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+        margin-top: 0; /* إزالة المسافة العلوية */
     }
-
     h2 {
+         margin-top: 10px; /* تأكيد وجود مسافة من الأعلى */
         font-size: 18px; /* تقليص حجم الخط في العنوان */
         padding: 5px; /* تقليص المسافات داخل العنوان */
     }
