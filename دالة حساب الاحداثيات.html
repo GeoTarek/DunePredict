@@ -120,8 +120,11 @@
 
         /* تخطيط الاستجابة للواجهة */
         @media (max-width: 768px) {
-            #content,#map {
+            #contener{
                 flex-direction: column; /* ترتيب العناصر عموديًا في الشاشات الصغيرة */
+            }
+            #content,#map {
+                
                 width: 100%;
                 height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
             }
@@ -173,6 +176,7 @@ h3 {
     </style>
 </head>
 <body>
+ <div id="contener">
     <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
     
     <div class="content">
@@ -220,6 +224,7 @@ h3 {
         </table>
         <button id="undo" onclick="window.location.href='jsتجربة.html';">الانتقال إلى الصفحة السابقة</button>
     </div>
+    </div>    
 
     <script>
         // إنشاء الخريطة باستخدام Leaflet
