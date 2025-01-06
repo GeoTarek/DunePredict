@@ -12,145 +12,188 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             height: 100vh;
-            background: linear-gradient(to top right, #ff999960 0%, #e9b59ba5 0%, #FF9999 60%, #e9b59b8d 100%);
+            flex-direction: row;
+            justify-content: space-between;
         }
 
-        /* تخطيط الخريطة */
+        /* تصمييم الخريطة */
         #map {
-            flex: 1;
             border: 2px solid #493415;
             border-radius: 10px;
+            margin: 3px;
+            height: 100%;
+            width: 70%;
         }
 
-        /* قسم النموذج */
+        /* تصمييم نموذج الإدخال ونتائج الحساب */
         .content {
-            padding: 20px;
-            background-color: #ffffff;
+            width: 30%;
+            padding: 0px 20px;
+            height: 100vh;
+            overflow-y: auto;
+            background: linear-gradient(to top, #8a80ac, #9056a3, #5d224b, #8a80ac);
+            background: linear-gradient(to top right, #ff999960 0%, #e9b59ba5 0%, #FF9999 60%, #e9b59b8d 100%);
+            border: 3px solid #333;
             border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            max-width: 800px;
-            width: 100%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* العناوين */
-        h2 {
-            text-align: center;
-            background-color: #444;
-            color: white;
-            padding: 10px;
-            border-radius: 15px;
-        }
-
-        h3 {
-            color: #5b0909;
-            margin-bottom: 10px;
-        }
-
-        /* تنسيق الجدول */
+        /* تنسيق الجداول */
         table {
             width: 100%;
-            margin-top: 15px;
+            margin-top: 0px 10px 5px 10px;
             border-collapse: collapse;
         }
 
         table th {
             background-color: #444;
             color: white;
-            padding: 10px;
         }
 
-        table td {
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
             text-align: center;
-            padding: 10px;
-            background-color: #f9f9f9;
+            background-color: white;
         }
 
         /* تنسيق النموذج */
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: inline-block;
-        }
-
-        input {
+        form label {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            color: rgb(43, 2, 2);
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        /* أزرار */
-        button {
+        form input {
+            width: 95%;
+            padding: 8px;
+            margin-top: 2px;
+            border-radius: 15px;
+            border: 2px solid #e6c7c7;
+        }
+
+        #b1, #b2 {
             background-color: #4b4e4b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 30px;
+            border-radius: 40px 15px;
+            border: 3px solid #151414;
             cursor: pointer;
-            margin-top: 10px;
+            padding: 10px 15px;
+            margin: 20px 25px;
+            font: italic bold 16px fantasy;
+            color: aliceblue;
         }
 
-        button:hover {
-            background-color: #6d736d;
+        #b1:hover, #b2:hover {
+            background-color: #b5bbb8;
         }
 
-        /* تنسيق الواجهة المتجاوبة */
+        /* تخطيط الاستجابة للواجهة */
         @media (max-width: 768px) {
-            .content {
-                margin: 10px;
-                padding: 15px;
+            body {
+                flex-direction: column; /* ترتيب الأعمدة على الشاشات الصغيرة */
+                height: auto;
             }
 
-            #map {
-                height: 50vh;
+            #map, .content {
+                width: 100%; /* جعل الخريطة والنموذج يشغلان العرض الكامل على الشاشات الصغيرة */
+                height: 50vh; /* خفض ارتفاع الخريطة لتناسب الشاشات الصغيرة */
+            }
+
+            .content {
+                padding: 10px;
+                width: 100%; /* العرض الكامل */
+            }
+
+            table, input, button {
+                width: 100%; /* جعل جميع العناصر تشغل العرض الكامل */
+                box-sizing: border-box;
+            }
+
+            #b1, #b2 {
+                width: auto; /* السماح للأزرار بالظهور بشكل أفضل */
+                padding: 10px 20px;
             }
 
             h2 {
                 font-size: 18px;
-                padding: 5px;
             }
 
-            button {
-                width: 100%;
+            h3 {
+                font-size: 16px;
             }
+        }
 
-            table {
-                font-size: 14px;
-            }
+        h2 {
+            display: inline-block;
+            text-align: center;
+            border: 3px solid #151414;
+            background-color: #444;
+            border-radius: 80px 15px;
+            color: aliceblue;
+            padding: 5px 5px;
+            margin: 0px 10px 30px 10px;
+        }
+
+        h3 {
+            margin-bottom: 5px;
+            color: #5b0909;
+            text-align: left;
+        }
+
+        #undo {
+            margin-top: 5px;
+            border-radius: 60px 20px;
+            padding: 8px;
+            font: 18px bold;
+            color: white;
+            background-color: brown;
+        }
+
+        #undo:hover {
+            background-color: #caa7a7;
         }
     </style>
 </head>
 <body>
-    <div id="map"></div> <!-- خريطة Leaflet -->
+    <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
     
     <div class="content">
         <h2>حساب الإحداثيات الجديدة</h2>
+        <!-- نموذج إدخال البيانات -->
         <form id="dataForm">
-            <label for="latitude">:خط العرض</label>
-            <input type="number" id="latitude" required step="0.0001">
-
-            <label for="longitude">:خط الطول</label>
-            <input type="number" id="longitude" required step="0.0001">
+            <div style="display: flex; justify-content: space-between; gap: 5px; margin-bottom: 5px;">
+                <div style="border: 2px solid #333; border-radius: 10px; padding:5px 5px; width: 48%;">
+                    <label for="latitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط العرض</label>
+                    <input step="0.0001" type="number" id="latitude" required>
+                </div>
+                <div style="border: 2px solid #333; border-radius: 10px;padding:5px 5px; width: 48%;">
+                    <label for="longitude" style="display: block; margin-bottom: 5px; font-weight: bold;">:خط الطول</label>
+                    <input step="0.0001" type="number" id="longitude" required>
+                </div>
+            </div>
 
             <label for="direction">:الاتجاه (بالدرجات)</label>
-            <input type="number" id="direction" required step="0.0001">
+            <input step="0.0001" type="number" id="direction" required><br>
 
             <label for="windspeed">:سرعة الرياح (كم/ساعة)</label>
-            <input type="number" id="windspeed" required step="0.0001">
+            <input step="0.0001" type="number" id="windspeed" required><br>
 
             <label for="time">:الزمن (ساعات)</label>
-            <input type="number" id="time" required step="0.0001">
+            <input step="0.0001" type="number" id="time" required><br>
 
-            <button id="b1" type="button" onclick="clearInputs()">مسح البيانات</button>
-            <button id="b2" type="submit">حساب</button>
+            <button id="b1" onclick="clearInputs()">مسح البيانات</button><button id="b2" type="submit">حساب</button>
         </form>
 
         <h3>النتائج:</h3>
+        <!-- عرض الجدول -->
         <table id="resultsTable">
             <thead>
                 <tr>
@@ -161,7 +204,6 @@
             </thead>
             <tbody></tbody>
         </table>
-
         <button id="undo" onclick="window.location.href='jsتجربة.html';">الانتقال إلى الصفحة السابقة</button>
     </div>
 
