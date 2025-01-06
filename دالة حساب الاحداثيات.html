@@ -124,15 +124,11 @@
           
             #map, .content {
                float: none;
+                width: 100%;
+                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
+                flex-direction: column; /* ترتيب العناصر عموديًا */
             }
-        #map{
-             height: 50%;
-            width: 100%; 
-        }
-          .content{
-             height: 50%;
-            width: 100%;  
-          }  
+        
         }
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
