@@ -118,14 +118,6 @@
             background-color: #b5bbb8;
         }
 
-        /* تخطيط الاستجابة للواجهة */
-        @media (max-width: 768px) {
-            #map, .content {
-                flex-direction: column; /* Stack map and content vertic
-                width: 100%; /* Full width on smaller screens */
-                height: 50%; /* Half the height of the viewport */
-            }
-        }
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
             text-align:center; /* لمحاذاة النص داخل الإطار */
@@ -153,6 +145,14 @@ h3 {
     background-color: #caa7a7;
 
 } 
+        /* تخطيط الاستجابة للواجهة */
+        @media (max-width: 768px) {
+            #map, .content {
+                display:none;
+                width: 100%; /* Full width on smaller screens */
+                height: 50%; /* Half the height of the viewport */
+            }
+        }
 
     </style>
 </head>
