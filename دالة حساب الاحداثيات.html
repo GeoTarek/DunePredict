@@ -13,6 +13,7 @@
             padding: 0;
             display: flex;
             height: 100vh;
+            flex-direction: row; /* Default to row */
         }
 
         /* تصمييم الخريطة */
@@ -146,12 +147,20 @@ h3 {
 } 
         /* Media query for small screens */
 @media (max-width: 768px) {
-   
-    #map,#content {
-        width: 100%; /* Full width on small screens */
-        height: 50vh; /* Adjust height as needed */
+    body {
+        flex-direction: column; /* Stack map and content vertically */
     }
-   
+
+    #map {
+        width: 100%; /* Full width on smaller screens */
+        height: 50%; /* Half the height of the viewport */
+    }
+
+    .content {
+        width: 100%; /* Full width on smaller screens */
+        height: 50%; /* Half the height of the viewport */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+    }
 }
 
     </style>
