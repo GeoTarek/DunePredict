@@ -296,6 +296,9 @@ h3 {
             document.getElementById('windspeed').value = '';
             document.getElementById('time').value = '';
         }
+         window.addEventListener('resize', function() {
+            map.invalidateSize();
+        });
     </script>
 </body>
 </html>
