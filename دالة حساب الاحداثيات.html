@@ -145,22 +145,22 @@ h3 {
     background-color: #caa7a7;
 
 } 
-     @media (max-width: 768px) {
+    @media (max-width: 768px) {
     body {
-        flex-direction: column; /* ترتيب العناصر عموديًا */
+        flex-direction: column;
         height: 100vh;
         margin: 0;
     }
 
     #map {
         width: 100%;
-        height: 50%;
+        height: calc(50vh - 20px); /* Adjusting for margins */
         margin-bottom: 20px;
     }
 
     .content {
         width: 100%;
-        height: 50%;
+        height: calc(50vh - 20px);
         overflow-y: auto;
         margin-top: 0;
     }
@@ -169,8 +169,6 @@ h3 {
         margin-top: 10px;
         font-size: 18px;
         padding: 5px;
-        text-align: center; /* محاذاة العنوان إلى المنتصف */
-        width: 100%;
     }
 
     form label, form input {
