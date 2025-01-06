@@ -117,6 +117,15 @@
         #b2:hover {
             background-color: #b5bbb8;
         }
+
+        /* تخطيط الاستجابة للواجهة */
+        @media (max-width: 768px) {
+            #map, .content {
+                flex-direction: column; /* Stack map and content vertic
+                width: 100%; /* Full width on smaller screens */
+                height: 50%; /* Half the height of the viewport */
+            }
+        }
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
             text-align:center; /* لمحاذاة النص داخل الإطار */
@@ -144,59 +153,10 @@ h3 {
     background-color: #caa7a7;
 
 } 
-       @media (max-width: 768px) {
-    #nav {
-        flex-direction: column; /* ترتيب عمودي للعناصر */
-    }
-
-    #map, #content {
-        width: 100%; /* العرض الكامل لكل عنصر */
-        height: 50%; /* كل عنصر يأخذ نصف الارتفاع */
-    }
-
-    #map {
-        margin-bottom: 5px; /* مسافة بسيطة بين العناصر */
-    }
-
-    #content {
-        padding: 10px; /* تقليل الحشو */
-        font-size: 0.9em; /* تصغير النصوص بشكل نسبي */
-    }
-
-    h2 {
-        font-size: 1.2em; /* حجم النص الرئيسي */
-        padding: 10px; /* مسافة داخلية بسيطة */
-    }
-
-    h3 {
-        font-size: 1em; /* حجم أصغر للعناوين الفرعية */
-    }
-
-    form label {
-        font-size: 0.9em; /* تصغير النصوص */
-    }
-
-    form input {
-        font-size: 0.85em; /* تصغير حجم الحقول */
-        padding: 6px; /* تقليل الحشو */
-    }
-
-    #b1, #b2, #undo {
-        font-size: 0.85em; /* حجم النصوص للأزرار */
-        padding: 8px 10px; /* تقليل الحشو الداخلي */
-    }
-
-    table {
-        font-size: 0.8em; /* تصغير النصوص داخل الجدول */
-    }
-}
-
 
     </style>
 </head>
 <body>
-    <div id="nav">
- <div id="contener">
     <div id="map"></div>  <!-- خريطة Leaflet على الجانب الأيسر -->
     
     <div class="content">
@@ -244,8 +204,7 @@ h3 {
         </table>
         <button id="undo" onclick="window.location.href='jsتجربة.html';">الانتقال إلى الصفحة السابقة</button>
     </div>
-    </div>    
-    </div>
+
     <script>
         // إنشاء الخريطة باستخدام Leaflet
         var map = L.map('map').setView([31.2, 30.0], 6);  // تعيين الإحداثيات الأساسية
