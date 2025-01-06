@@ -120,16 +120,16 @@
         }
 
         /* تخطيط الاستجابة للواجهة */
-        @media (max-width: 768px) {
-          
-            #map, .content {
-               float: none;
-                width: 100%;
-                height: 50vh; /* عرض الخريطة ونص الجانب عند تقسيم الشاشة */
-                flex-direction: column; /* ترتيب العناصر عموديًا */
-            }
-        
-        }
+       @media (max-width: 768px) {
+    body {
+        flex-direction: column; /* ترتيب العناصر عموديًا */
+    }
+
+    #map, .content {
+        width: 100%; /* تعيين العرض الكامل للعنصرين */
+        height: 50vh; /* تعيين ارتفاع الخريطة والنموذج ليأخذ 50% من الشاشة */
+    }
+}
         h2 {
              display: inline-block; /* لتقليص العرض حول النص */
             text-align:center; /* لمحاذاة النص داخل الإطار */
